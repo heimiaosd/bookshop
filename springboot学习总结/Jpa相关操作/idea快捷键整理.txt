@@ -1,0 +1,2 @@
+ctrl + alt + v  快速创建一个 对象
+alt + insert  快速添加get set方法及构造方法

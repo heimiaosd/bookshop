@@ -1,0 +1,8 @@
+数据库操作请求 -> Spring Data JPA ->JPA->Hibernate->JDBC-DB
+
+http json
+-> Controller（将Java方法转换为Http服务，维护用户会话信息）
+->Service（业务逻辑实现，绝大部分代码写在这一层） 
+-> Repository（不包含任何业务逻辑，纯粹的的数据库操作） 
+-> Domain(映射数据库对象，对业务建模) 
+->DB

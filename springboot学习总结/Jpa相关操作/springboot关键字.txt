@@ -1,0 +1,21 @@
+spring boot 关键字
+
+//用于读取配置文件的内容
+@Value("${server.name}")
+private String name;
+
+//设置的返回地址
+@GetMapping("/callback")
+
+//传参
+@RequestParam(name = "xiaoming")
+
+//不用实例化对象可以直接使用
+@Autowired 
+private MyClass myClass;
+
+//springboot 的控制类
+@Controller
+public class MyClass{
+}
+

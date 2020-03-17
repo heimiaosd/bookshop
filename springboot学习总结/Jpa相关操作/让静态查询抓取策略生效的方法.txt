@@ -1,0 +1,24 @@
+//第一种方法  通过写query语句来使之生效   问题：很麻烦
+
+@Query("from Book b left join b.category where  b.name = ?1")
+Book findByName(String name);
+
+
+//第二种方法  声明@EntityGraph   问题：声明多个方法时 每一个方法都要改策略很麻烦
+
+@EntityGraph(attributePaths = {"category"})
+Book findByName(String bookName);
+
+
+//第三种方法 
+
+1、在要抓取的类上声明 @NamedEntityGraph
+@NamedEntityGraph(name = "Book.fetch.category.and.author",
+        attributeNodes = {
+                @NamedAttributeNode("category"),
+                @NamedAttributeNode("authors")
+        }
+)
+2、在要使用抓取策略的方法上引入策略
+@EntityGraph("Book.fetch.category.and.author")
+Book findByName(String bookName);

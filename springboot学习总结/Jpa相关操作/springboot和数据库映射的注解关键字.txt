@@ -1,0 +1,25 @@
+@Entity 表的注解
+@Table(name = "表的名字") 可以修改表的名字
+
+@Id  设置当前字段为主键 
+@GeneratedValue 设置当前字段为自动增长
+@Basic 其他字段默认添加Basic 
+@Column(name= "列的名字", length = 10 , nullable = false, unique = true) 修改列的属性
+	@Column(columnDefinition = "INT(3)")  指定大小
+@Transient 标注此字段不用添加进数据库
+@Temporal(TemporalType.DATE) 控制日期格式 （有时间戳 具体日期 和具体时间）
+@Enumerated(EnumType.STRING) 将枚举值以字符串的形式存入数据库
+
+(成对使用)
+@Embeddable  定义一个类为内嵌对象 
+@Embedded     声明此对象可被内嵌
+
+@ElementCollection  定义集合对象为数据库对象
+	@OrderBy("book.name asc") 通过名字来排list里内容的顺序（asc为升序 desc为降序）
+@ManyToOne  表多对一的关系
+@OneToMany  表一对多的关系
+@OneToMany(mappedBy = "category") 放弃外键 （不会生成多余的表）
+
+@MappedSuperclass 定义父类
+
+@Autowired 注入外接对象

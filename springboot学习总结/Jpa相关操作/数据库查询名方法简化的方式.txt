@@ -1,0 +1,11 @@
+//²éÑ¯
+findByNameLikeAndCategoryNameOrderByNameDesc(String bookname, Pageable sort)
+@Query("from Book b where b.name like ? 1 and b.category.name")  
+Page<Book>findBooks(String bookname, String categoryName, Pageable sort);
+
+//¸üÐÂ É¾³ý
+@Query("update Book b set b.name = ?1 where b.id = ?2")
+@Modifying
+int updateBook(String bookname, Long bookId)
+
+

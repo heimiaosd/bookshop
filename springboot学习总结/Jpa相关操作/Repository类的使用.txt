@@ -1,0 +1,5 @@
+PagingAndSortingRepository 提供了基本的分页和查询的功能
+
+CrudRepository 提供了基本的增删改查的功能
+
+JpaRepository  继承了以上两个Repository  
