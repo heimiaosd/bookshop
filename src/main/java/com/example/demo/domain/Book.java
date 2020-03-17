@@ -4,12 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NamedEntityGraph(name = "Book.fetch.category.and.author",
-        attributeNodes = {
-                @NamedAttributeNode("category"),
-                @NamedAttributeNode("authors")
-        }
-)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedEntityGraph(name = "Book.fetch.category.and.author", attributeNodes = {@NamedAttributeNode("category"), @NamedAttributeNode("authors")})
 public class Book extends DomainImpl {
 
     private String name;

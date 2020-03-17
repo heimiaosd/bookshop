@@ -1,0 +1,2 @@
+List<Book> books = bookRepository.findAll();
+books.stream().forEach(book -> System.out.println(book.getClass().getSimpleName()));

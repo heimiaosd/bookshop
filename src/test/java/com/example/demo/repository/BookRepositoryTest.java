@@ -2,6 +2,8 @@ package com.example.demo.repository;
 
 import com.example.demo.BaseTest;
 import com.example.demo.domain.Book;
+import com.example.demo.domain.EBook;
+import com.example.demo.domain.PrintBook;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -12,13 +14,14 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.persistence.criteria.*;
-
+import java.util.List;
 
 
 public class BookRepositoryTest extends BaseTest {
     @Autowired
     private BookRepository bookRepository;
     @Autowired
+    private PrintBookRepository printBookRepository;
     private PlatformTransactionManager transactionManager;
 
     @Test
@@ -69,8 +72,22 @@ public class BookRepositoryTest extends BaseTest {
     public void test4(){
         Book book = bookRepository.findById(1L).get();
         System.out.println(book.getCategory().getName());
+    }
 
-      /* Book book = bookRepository.findByName("美女与野兽");
-       System.out.println(book.getCategory().getName());*/
+    @Test
+    public void test5(){
+        PrintBook printBook = new PrintBook();
+        printBook.setName("霸道总裁爱上我");
+        bookRepository.save(printBook);
+
+        EBook eBook = new EBook();
+        eBook.setName("校园风流少爷");
+        bookRepository.save(eBook);
+
+        List<Book> books = bookRepository.findAll();
+        books.stream().forEach(book -> System.out.println(book.getClass().getSimpleName()));
+
+        List<PrintBook> printBooks = printBookRepository.findAll();
+        printBooks.stream().forEach(printBook1 -> System.out.println(printBook1.getClass().getSimpleName()) );
     }
 }
