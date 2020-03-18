@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,17 @@ public class Author extends DomainImpl {
 
     @OneToOne
     private AuthorInfo info;
+
+    @Email
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public AuthorInfo getInfo() {
         return info;

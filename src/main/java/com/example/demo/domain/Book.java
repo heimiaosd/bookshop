@@ -8,6 +8,9 @@ import java.util.List;
 @NamedEntityGraph(name = "Book.fetch.category.and.author", attributeNodes = {@NamedAttributeNode("category"), @NamedAttributeNode("authors")})
 public class Book extends DomainImpl {
 
+    @Version
+    private int version;
+
     private String name;
 
     @ManyToOne
@@ -38,5 +41,13 @@ public class Book extends DomainImpl {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

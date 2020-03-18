@@ -1,9 +1,8 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.PrintBook;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import com.example.demo.support.BookShopRepository;
 
-public interface PrintBookRepository extends JpaRepository<PrintBook, Long>, JpaSpecificationExecutor<PrintBook> {
+public interface PrintBookRepository extends BookShopRepository<PrintBook> {
 
 }

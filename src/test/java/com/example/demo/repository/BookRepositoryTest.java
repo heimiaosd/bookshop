@@ -90,4 +90,12 @@ public class BookRepositoryTest extends BaseTest {
         List<PrintBook> printBooks = printBookRepository.findAll();
         printBooks.stream().forEach(printBook1 -> System.out.println(printBook1.getClass().getSimpleName()) );
     }
+
+    @Test
+    public void test6(){
+        PrintBook printBook = printBookRepository.findById(1000L).get();
+        printBook.setName("狐妖在校园");
+        printBookRepository.saveAndFlush(printBook);
+    }
+
 }
