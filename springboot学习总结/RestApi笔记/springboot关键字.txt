@@ -19,3 +19,9 @@ private MyClass myClass;
 public class MyClass{
 }
 
+@RestController 声明这个控制器是Rest风格的
+@RequestMapping(value = "/book", method = RequestMethod.GET) 请求地址和请求方法
+
+@PageableDefault(size = 10) Pageable pageable 设置默认分页条数
+
+@GetMapping = @RequestMapping(method = RequestMethod.GET)
