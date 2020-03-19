@@ -1,0 +1,5 @@
+query       使用  GET请求
+getInfo     使用  GET请求
+create      使用  POST请求
+update      使用  PUT请求
+delete      使用  DELETE请求

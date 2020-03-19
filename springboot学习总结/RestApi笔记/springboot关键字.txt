@@ -25,3 +25,39 @@ public class MyClass{
 @PageableDefault(size = 10) Pageable pageable 设置默认分页条数
 
 @GetMapping = @RequestMapping(method = RequestMethod.GET)
+
+@JsonView(BookListView.class)
+public interface GetListView{};
+public interface GetInfoView extends GetListView{};
+接着在请求上写 jsonview的注解
+@GetMapping("/{id:\\d}")
+    @JsonView(BookInfo.GetInfoView.class)
+    public BookInfo getInfo(@PathVariable Long id){
+        System.out.println(id);
+        BookInfo bookInfo = new BookInfo();
+        bookInfo.setName("菊花侠大战桃花怪");
+        return bookInfo;
+    }
+
+@PostMapping 处理post请求  如果接受的数据是一个json字符串则需要 使用 @RequestBody
+ 例如
+ @PostMapping
+ public BookInfo create(@RequestBody BookInfo info)
+
+ (配置文件)
+ #设置时区
+ spring.jackson.time-zone=GMT+8
+
+ 判断某字段不能为空
+ 1.@NotBlank
+  private String content;
+ 2.@PostMapping
+   public BookInfo create(@Valid @RequestBody BookInfo info)
+
+ @PostMapping
+    public BookInfo create(@Valid @RequestBody BookInfo info, BindingResult result){
+        if(result.hasErrors()) {
+            result.getAllErrors().stream().forEach(objectError -> System.out.println(objectError.getDefaultMessage()));
+        }
+加入BindingResult来显示详细错误信息
+
